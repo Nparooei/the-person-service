@@ -1,0 +1,16 @@
+{
+  "default": {
+    "paths": [
+      "bdd/features/**/*.feature"
+    ],
+    "require": [
+      "bdd/support/world.ts",
+      "bdd/support/hooks.ts",
+      "bdd/steps/*.ts"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "parallel": 0
+  }
+}

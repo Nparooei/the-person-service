@@ -1,0 +1,83 @@
+{
+  "name": "person-service",
+  "version": "0.1.0",
+  "bin": {
+    "person-service": "dist/bin/person-service.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "prepare": "husky",
+    "lint": "eslint bin src bdd",
+    "make-pretty": "prettier ./bin ./src ./bdd --write",
+    "type-check": "tsc --noEmit",
+    "commitlint": "commitlint --edit",
+    "bdd": "cucumber-js",
+    "bdd:dry-run": "cucumber-js --dry-run",
+    "bdd:dev": "BDD_STAGE=dev cucumber-js --format pretty",
+    "bdd:prod": "BDD_STAGE=prod cucumber-js --format pretty",
+    "test:coverage": "jest --coverage",
+    "bdd:deploy": "cdk deploy 'Bdd-*'",
+    "bdd:deploy:dev": "cdk deploy 'Bdd-*' -c stage=dev",
+    "bdd:deploy:prod": "cdk deploy 'Bdd-*' -c stage=prod",
+    "app:deploy": "cdk deploy 'App-*'",
+    "deploy:dev": "cdk deploy 'App-*' -c stage=dev",
+    "deploy:prod": "cdk deploy 'App-*' -c stage=prod",
+    "destroy": "cdk destroy --all",
+    "destroy:dev": "cdk destroy --all -c stage=dev",
+    "destroy:prod": "cdk destroy --all -c stage=prod",
+    "app:destroy": "cdk destroy 'App-*'",
+    "app:destroy:dev": "cdk destroy 'App-*' -c stage=dev",
+    "app:destroy:prod": "cdk destroy 'App-*' -c stage=prod",
+    "bdd:destroy": "cdk destroy 'Bdd-*'",
+    "bdd:destroy:dev": "cdk destroy 'Bdd-*' -c stage=dev",
+    "bdd:destroy:prod": "cdk destroy 'Bdd-*' -c stage=prod",
+    "synth": "cdk synth",
+    "synth:dev": "cdk synth -c stage=dev",
+    "synth:prod": "cdk synth -c stage=prod",
+    "format:check": "prettier ./bin ./src ./bdd --check"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@cucumber/cucumber": "13.3.0",
+    "@types/aws-lambda": "8.10.164",
+    "@types/jest": "30.0.0",
+    "@types/lambda-log": "^3.0.3",
+    "@types/node": "^24.0.0",
+    "esbuild": "0.28.2",
+    "eslint": "10.12.0",
+    "husky": "9.1.7",
+    "jest": "30.5.2",
+    "prettier": "3.9.9",
+    "ts-jest": "29.4.14",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3",
+    "aws-cdk-lib": "2.273.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21",
+    "aws-cdk": "2.1145.0",
+    "@eslint/js": "10.0.1",
+    "typescript-eslint": "8.71.1",
+    "@aws-sdk/client-cloudformation": "3.1148.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "3.1148.0",
+    "@aws-sdk/client-eventbridge": "3.1148.0",
+    "@aws-sdk/util-dynamodb": "3.996.9",
+    "lambda-log": "^3.1.0",
+    "ulid": "3.0.2",
+    "zod": "4.6.5"
+  },
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0"
+  },
+  "overrides": {
+    "@istanbuljs/load-nyc-config": {
+      "js-yaml": "4.3.2"
+    }
+  },
+  "private": true
+}
